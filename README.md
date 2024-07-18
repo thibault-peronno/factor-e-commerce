@@ -23,4 +23,18 @@ Copier-coller le fichier ```.env.example``` et le nommer en ```.env.``` Ce fichi
 
 Configurez votre connexion à votre base de données.
 
+Exemple d'un script sql 
+```sql
+DROP DATABASE IF EXISTS `factor`;
+DROP USER IF EXISTS 'factor'@'localhost';
+
+CREATE DATABASE IF NOT EXISTS porteFolio CHARACTER SET UTF8;
+USE factor;
+
+CREATE USER IF NOT EXISTS 'factor'@'localhost' IDENTIFIED BY 'factor';
+GRANT ALL PRIVILEGES ON factor.* TO 'factor'@'localhost';
+```
+
+Ici les migrations
+
 ## Front-end
