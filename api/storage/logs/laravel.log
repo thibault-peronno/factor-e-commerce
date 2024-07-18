@@ -184,3 +184,19 @@
 #49 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
 #50 {main}
 "} 
+[2024-07-18 13:22:49] local.ERROR: The "--ressource" option does not exist. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): The \"--ressource\" option does not exist. at C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Input\\ArgvInput.php:220)
+[stacktrace]
+#0 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Input\\ArgvInput.php(149): Symfony\\Component\\Console\\Input\\ArgvInput->addLongOption('ressource', NULL)
+#1 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Input\\ArgvInput.php(82): Symfony\\Component\\Console\\Input\\ArgvInput->parseLongOption('--ressource')
+#2 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Input\\ArgvInput.php(71): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('--ressource', true)
+#3 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Input\\Input.php(53): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#4 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Command\\Command.php(238): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#5 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#6 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Routing\\Console\\ControllerMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\symfony\\console\\Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(196): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 C:\\Users\\peron\\Desktop\\Code\\factor-e-commerce\\api\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#12 {main}
+"} 
