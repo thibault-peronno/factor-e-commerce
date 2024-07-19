@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('commands', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('date_command');
+            $table->string('number_command');
+            $table->foreignId('user_id', 'fk_user_in_command')->constrained("users")->onDelete('no action')->onUpdate('cascade');
             $table->timestamps();
         });
     }

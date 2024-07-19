@@ -28,7 +28,7 @@ Exemple d'un script sql
 DROP DATABASE IF EXISTS `factor`;
 DROP USER IF EXISTS 'factor'@'localhost';
 
-CREATE DATABASE IF NOT EXISTS porteFolio CHARACTER SET UTF8;
+CREATE DATABASE IF NOT EXISTS factor CHARACTER SET UTF8;
 USE factor;
 
 CREATE USER IF NOT EXISTS 'factor'@'localhost' IDENTIFIED BY 'factor';
