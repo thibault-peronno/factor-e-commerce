@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->string('picture');
             $table->integer('price', false);
+            $table->string('category', 100)->default("cat_1", "cat_2", "cat_3", "cat_4", "cat_5");
             $table->integer('available_quantity', false);
             $table->timestamps();
         });
