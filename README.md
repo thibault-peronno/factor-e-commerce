@@ -69,4 +69,40 @@ Si vous avez utilisé la commande de migration pour créer vos tables, vous avez
 php artisan migrate:fresh --seed
 ```
 
+### Routes
+
+Pour afficher les routes, vous pouvez exécuter cette commande.
+```bash
+php artisan route:list
+```
+
+Les routes en place dans le projet.
+
+```bash
+  GET|HEAD        / ................................................................................................................  
+  POST            _ignition/execute-solution ......... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController  
+  GET|HEAD        _ignition/health-check ..................... ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController  
+  POST            _ignition/update-config .................. ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController  
+  GET|HEAD        api/cart ....................................................................... cart.index › CartController@index  
+  POST            api/cart ....................................................................... cart.store › CartController@store  
+  GET|HEAD        api/cart/{cart} .................................................................. cart.show › CartController@show  
+  PUT|PATCH       api/cart/{cart} .............................................................. cart.update › CartController@update  
+  DELETE          api/cart/{cart} ............................................................ cart.destroy › CartController@destroy  
+  GET|HEAD        api/command .............................................................. command.index › CommandController@index  
+  POST            api/command .............................................................. command.store › CommandController@store  
+  GET|HEAD        api/command/{command} ...................................................... command.show › CommandController@show  
+  PUT|PATCH       api/command/{command} .................................................. command.update › CommandController@update  
+  DELETE          api/command/{command} ................................................ command.destroy › CommandController@destroy  
+  GET|HEAD        api/product .............................................................. product.index › ProductController@index  
+  POST            api/product .............................................................. product.store › ProductController@store  
+  GET|HEAD        api/product/{product} ...................................................... product.show › ProductController@show  
+  PUT|PATCH       api/product/{product} .................................................. product.update › ProductController@update  
+  DELETE          api/product/{product} ................................................ product.destroy › ProductController@destroy  
+  GET|HEAD        api/user ....................................................................... user.index › UserController@index  
+  POST            api/user ....................................................................... user.store › UserController@store  
+  GET|HEAD        api/user/{user} .................................................................. user.show › UserController@show  
+  PUT|PATCH       api/user/{user} .............................................................. user.update › UserController@update  
+  DELETE          api/user/{user} ............................................................ user.destroy › UserController@destroy 
+```
+
 ## Front-end
