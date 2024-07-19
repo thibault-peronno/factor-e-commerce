@@ -21,6 +21,7 @@ class ProductFactory extends Factory
             'description' => fake()->sentence(),
             'picture' => fake()->imageUrl(640, 480, 'products', true, null , true, 'jpg'),
             'price' => fake()->randomNumber(3, false),
+            'category' => fake()->randomElement(['cat-1', 'cat-2', 'cat-3', 'cat-4', 'cat-5']),
             'available_quantity' => fake()->randomNumber(2, false),
         ];
     }
