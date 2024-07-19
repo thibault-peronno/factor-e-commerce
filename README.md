@@ -11,6 +11,8 @@ Si vous n'avez pas composer sur votre machine : [Composer](https://getcomposer.o
 
 Exécuter la commande suivante. Composer est l'équivalent de npm, yarn en JavaScript.
 
+**Toujours se mettre dans le dossier API**
+
 ```bash
 composer install
 ```
@@ -103,6 +105,14 @@ Les routes en place dans le projet.
   GET|HEAD        api/user/{user} .................................................................. user.show › UserController@show  
   PUT|PATCH       api/user/{user} .............................................................. user.update › UserController@update  
   DELETE          api/user/{user} ............................................................ user.destroy › UserController@destroy 
+```
+
+### Serveur
+
+Pour lancer le serveur API, exécuter cette commande
+
+```bash
+php artisan serve
 ```
 
 ## Front-end
