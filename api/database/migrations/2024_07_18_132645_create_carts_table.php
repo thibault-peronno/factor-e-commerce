@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->boolean('retire');
+            $table->boolean('is_retire')->default(false);
+            $table->boolean('is_buy')->default(false);
             $table->foreignId('product_id', 'fk_product_in_cart')->constrained("products")->onDelete('no action')->onUpdate('cascade');
             $table->foreignId('command_id', 'fk_product_in_cart')->constrained("commands")->onDelete('no action')->onUpdate('cascade');
             $table->foreignId('user_id', 'fk_user_in_cart')->constrained("users")->onDelete('no action')->onUpdate('cascade');

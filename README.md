@@ -35,6 +35,38 @@ CREATE USER IF NOT EXISTS 'factor'@'localhost' IDENTIFIED BY 'factor';
 GRANT ALL PRIVILEGES ON factor.* TO 'factor'@'localhost';
 ```
 
-Ici les migrations
+Créer la base de données avec le script ci-dessus
+
+Pour exécuter toutes vos migrations, exécutez la migrate commande Artisan :
+
+```sql
+php artisan migrate
+```
+
+#### Forcer les migrations à s'exécuter en production
+
+```sql
+php artisan migrate --force
+```
+
+Plus d'information sur la documentation de [Laravel Migration](https://laravel.com/docs/7.x/migrations)
+
+### Seeder : Faker data
+
+Le projet contient un processus mis en place avec faker avant de générer des données de test automatiquement.
+
+Pour cela il faut effectuer la commande suivante. Vérifier que votre base de données est en place.
+
+Par défaut la commande exécute le fichier DatabaseSeeeder.php
+
+```bash
+php artisan db:seed
+```
+
+Si vous avez utilisé la commande de migration pour créer vos tables, vous avez aussi la commande ci-dessous. Elle permet de supprimer et de refaire votre BDD en mettant les fausses données
+
+```bash
+php artisan migrate:fresh --seed
+```
 
 ## Front-end
