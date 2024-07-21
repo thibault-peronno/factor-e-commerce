@@ -18,11 +18,18 @@ h1{
   font-size: xx-large;
 }
 h2{
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 a{
   text-decoration: none;
+}
+
+button{
+  font-size: larger;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
 }
 
 .montserrat-alternates-thin {
