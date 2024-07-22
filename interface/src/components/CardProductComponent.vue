@@ -12,7 +12,10 @@ defineProps(['productValue'])
         </span>
         <h2>{{ productValue.name }}</h2>
         <p>{{ productValue.description }}</p>
-        <button class="montserrat-alternates-medium">Ajouter</button>
+        <button class="montserrat-alternates-medium" >
+            <i class="pi pi-plus" style="color: #FFFFFF; font-size: 1.5rem"></i>
+            Ajouter
+        </button>
     </div>
 </template>
 
@@ -58,9 +61,10 @@ img{
 }
 
 button {
-    background-color: #64A5C4;
     width: 100%;
     margin: 1.5rem 0 0 0;
     font-weight: bold;
+    display: flex;
+    gap: 30%;
 }
 </style>
