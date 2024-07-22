@@ -2,9 +2,7 @@
 @import 'primeicons/primeicons.css';
 
 #app {
-  padding: 1rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background-color: #DDF7F5;
   color: black;
 }
 
@@ -41,10 +39,6 @@ button{
 }
 
 @media (min-width: 1024px) {
-  #app {
-    padding: 2rem;
-    
-  }
 }
 
 .montserrat-alternates-thin {
