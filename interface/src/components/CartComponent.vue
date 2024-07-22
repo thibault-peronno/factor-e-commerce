@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Divider from 'primevue/divider';
 
 </script>
 
@@ -7,9 +8,9 @@
         <div>
             <span class="cart-section_title-icons">
                 <h3>Votre panier</h3>
-                <i class="pi pi-times" style="color: #048A84; font-size: 2rem"></i>
+                <i class="pi pi-times" style="color: #048A84; font-size: 2rem; cursor: pointer;"></i>
             </span>
-            <hr>
+            <Divider />
             <div class="cart-section_product">
                 <img src="" alt="image">
                 <div class="cart-section_name-quantity">
@@ -17,7 +18,7 @@
                     <p class="cart-section-product_quantity-price">1 x 30€</p> 
                 </div>
                 <div>
-                    <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem"></i>
+                    <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem; cursor: pointer;"></i>
                 </div>
             </div>
             <div class="cart-section_product">
@@ -27,7 +28,7 @@
                     <p class="cart-section-product_quantity-price">1 x 30€</p> 
                 </div>
                 <div>
-                    <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem"></i>
+                    <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem; cursor: pointer;"></i>
                 </div>
             </div>
             <div class="cart-section_product">
