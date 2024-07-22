@@ -1,4 +1,5 @@
 @import './base.css';
+@import 'primeicons/primeicons.css';
 
 #app {
   padding: 1rem;
@@ -30,10 +31,13 @@ a{
 }
 
 button{
+  background-color: #048A84;
   font-size: larger;
   border: none;
   border-radius: 5px;
   padding: 1rem;
+  color: white;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {
