@@ -20,22 +20,29 @@ onMounted(() => {
 
 <style scoped>
 .divCard {
-  display: flex;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  width: max-content;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
 }
 
 @media (min-width: 760px) {
   .divCard {
-  justify-content: space-evenly;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 }
 
 @media (min-width: 1024px) {
   .divCard {
-  justify-content: space-evenly;
+    grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+}
+@media (min-width: 1300px) {
+  .divCard {
+    grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
 }
 }
