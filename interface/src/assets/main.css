@@ -1,5 +1,7 @@
+@import './base.css';
+
 #app {
-  padding: 2rem;
+  padding: 1rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-color: #DDF7F5;
   color: black;
@@ -16,9 +18,11 @@
 
 h1{
   font-size: xx-large;
+  margin: 3.5rem 0;
 }
 h2{
   font-size: x-large;
+  margin: 2.5rem 0;
 }
 
 a{
@@ -30,6 +34,13 @@ button{
   border: none;
   border-radius: 5px;
   padding: 1rem;
+}
+
+@media (min-width: 1024px) {
+  #app {
+    padding: 2rem;
+    
+  }
 }
 
 .montserrat-alternates-thin {
