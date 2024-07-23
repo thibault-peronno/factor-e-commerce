@@ -13,12 +13,14 @@ defineProps(['productValue'])
             </span>
             <h2>{{ productValue.name }}</h2>
             <!-- <p>{{ productValue.description }}</p> -->
-            <button class="montserrat-alternates-medium" >
-                <!-- <i class="pi pi-plus" style="color: #FFFFFF; font-size: 1.5rem"></i> -->
-                Details
-            </button>
+            <routerLink :to="{ name: 'detailsProduct', params: { productId: productValue.id } }">
+                <button class="montserrat-alternates-medium" >
+                    <!-- <i class="pi pi-plus" style="color: #FFFFFF; font-size: 1.5rem"></i> -->
+                    Details
+                </button>
+            </routerLink>
+            </div>
         </div>
-    </div>
 </template>
 
 <style scoped>
