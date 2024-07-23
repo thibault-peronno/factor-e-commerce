@@ -33,6 +33,7 @@ header {
   align-items: center;
   background-color: #DDF7F5;
   padding: 1rem;
+  flex-wrap: wrap;
 }
 
 nav {

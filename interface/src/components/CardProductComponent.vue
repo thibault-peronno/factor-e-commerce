@@ -12,7 +12,7 @@ defineProps(['productValue'])
                 <p class="stock">Stock : {{ productValue.available_quantity}}</p>
             </span>
             <h2>{{ productValue.name }}</h2>
-            <p>{{ productValue.description }}</p>
+            <!-- <p>{{ productValue.description }}</p> -->
             <button class="montserrat-alternates-medium" >
                 <i class="pi pi-plus" style="color: #FFFFFF; font-size: 1.5rem"></i>
                 Ajouter
@@ -77,5 +77,11 @@ button {
     font-weight: bold;
     display: flex;
     gap: 30%;
+}
+
+@media (max-width: 320px) {
+    .cardProduct {
+    max-width: 310px;
+}
 }
 </style>

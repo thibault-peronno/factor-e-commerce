@@ -60,7 +60,7 @@ const cartStore = useCartStore();
     right: -1000px;
     background-color: white;
     height: 100vh;
-    width: 350px;
+    width: 100%;
     padding: 1rem;
 }
 .cartSection_title-icons{
@@ -86,5 +86,11 @@ const cartStore = useCartStore();
 }
 .cartSection_name{
     text-transform: uppercase;
+}
+
+@media (min-width: 760px) {
+    .cartSectionHidden{
+    width: 350px;
+}
 }
 </style>
