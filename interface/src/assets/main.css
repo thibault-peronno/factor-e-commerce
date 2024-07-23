@@ -2,33 +2,34 @@
 @import 'primeicons/primeicons.css';
 
 #app {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: black;
 }
 
-.baseFontSize{
+.baseFontSize {
   font-size: large;
 }
 
-.paintFont{
+.paintFont {
   font-size: larger;
   color: black;
 }
 
-h1{
+h1 {
   font-size: xx-large;
   margin: 3.5rem 0;
 }
-h2{
+
+h2 {
   font-size: x-large;
   margin: 2.5rem 0;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-button{
+button {
   background-color: #048A84;
   font-size: larger;
   border: none;
@@ -38,7 +39,12 @@ button{
   cursor: pointer;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) {}
+
+@media (min-width: 760px) {
+  main {
+    margin: 0 20%;
+  }
 }
 
 .montserrat-alternates-thin {
@@ -148,6 +154,3 @@ button{
   font-weight: 900;
   font-style: italic;
 }
-
-
-

@@ -14,8 +14,8 @@ defineProps(['productValue'])
             <h2>{{ productValue.name }}</h2>
             <!-- <p>{{ productValue.description }}</p> -->
             <button class="montserrat-alternates-medium" >
-                <i class="pi pi-plus" style="color: #FFFFFF; font-size: 1.5rem"></i>
-                Ajouter
+                <!-- <i class="pi pi-plus" style="color: #FFFFFF; font-size: 1.5rem"></i> -->
+                Details
             </button>
         </div>
     </div>
@@ -75,8 +75,16 @@ button {
     width: 100%;
     margin: 1.5rem 0 0 0;
     font-weight: bold;
-    display: flex;
-    gap: 30%;
+    background-color: transparent;
+    border: 1px solid #048A84;
+    color: #048A84;
+    /* display: flex;
+    gap: 30%; */
+}
+
+button:hover{
+    background-color: #048A84;
+    color: #DDF7F5;
 }
 
 @media (max-width: 320px) {
