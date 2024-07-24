@@ -17,7 +17,17 @@ interface product {
 
 export const useDetailsProductStore = defineStore('detailsProduct', () => {
   const value = ref(0)
-  const product = ref<product>()
+  const product = ref<product>({
+    id: 0,
+    name: 'Non trouvé',
+    description: 'Le produit n\'a pas été trouvé',
+    picture: '',
+    price: 0,
+    category: 'introuvable',
+    available_quantity: 0,
+    created_at: '',
+    updated_at: ''
+  })
 
   const route = useRoute();
 

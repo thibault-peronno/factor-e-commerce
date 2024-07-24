@@ -15,14 +15,19 @@ type productsInCart = productCart[];
 export const useCartStore = defineStore('cart', () => {
   const cartIsactive = ref(false);
   const cartProducts = ref<productsInCart>([]);
-  const countProductsInCart = ref(2);
+  const countProductsInCart = ref(0);
 
   const axiosInstance = axios.create({
     baseURL: "http://127.0.0.1:8000/api/",
     withCredentials: true,
   })
 
-  // const toggleCart = computed(() => cartIsactive.value = !cartIsactive.value)
+  const countCart = computed(() => countProductsInCart.value = cartProducts.value.length)
+
+  function addProductInCart(newProductInCArt : productCart) {
+    cartProducts.value.push(newProductInCArt);
+    console.table(cartProducts.value);
+  }
 
   function toggleCart() {
     cartIsactive.value = !cartIsactive.value;
@@ -41,5 +46,5 @@ export const useCartStore = defineStore('cart', () => {
 
   
 
-  return { cartIsactive, toggleCart, cartProducts, countProductsInCart }
+  return { cartIsactive,  cartProducts, countProductsInCart, countCart, toggleCart, addProductInCart }
 })

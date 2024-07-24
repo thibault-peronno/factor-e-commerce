@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import InputNumber from 'primevue/inputnumber'
-import { useDetailsProductStore } from '../stores/detailsProduct'
+import InputNumber from 'primevue/inputnumber';
+import { useDetailsProductStore } from '../stores/detailsProduct';
+import { useCartStore } from '@/stores/cart';
 import { onMounted } from 'vue';
 
-const detailsProduct = useDetailsProductStore()
+const detailsProduct = useDetailsProductStore();
+const cartStore = useCartStore();
 
 
-onMounted(()=>{
+onMounted(() => {
     detailsProduct.callProductApi();
 
 })
@@ -15,19 +17,21 @@ onMounted(()=>{
 <template>
     <div class="product">
         <div class="product_div_img">
-            <img class="product_div-img" :src="detailsProduct.product?.picture" alt="L'image du produit" />
+            <img class="product_div-img" :src="detailsProduct.product.picture" alt="L'image du produit" />
         </div>
         <div class="product_div-data">
-            <h1>{{ detailsProduct.product?.name }}</h1>
+            <h1>{{ detailsProduct.product.name }}</h1>
             <div>
-                <p>{{ detailsProduct.product?.description }}</p>
+                <p>{{ detailsProduct.product.description }}</p>
                 <span>
-                    <p>{{ detailsProduct.product?.category }}</p>
-                    <p>{{ detailsProduct.product?.available_quantity }}</p>
+                    <p>{{ detailsProduct.product.category }}</p>
+                    <p>{{ detailsProduct.product.available_quantity }}</p>
+                    <p>{{ detailsProduct.product.price }} €</p>
                     <div class="product_datas_quantity-add">
                         <div class="card flex justify-center">
                             <InputNumber class="personnalCss" v-model="detailsProduct.value" showButtons
-                                buttonLayout="vertical" style="width: 3rem" :min="0" :max="detailsProduct.product?.available_quantity">
+                                buttonLayout="vertical" style="width: 3rem" :min="0"
+                                :max="detailsProduct.product.available_quantity">
                                 <template #incrementbuttonicon>
                                     <span class="pi pi-plus" />
                                 </template>
@@ -36,8 +40,15 @@ onMounted(()=>{
                                 </template>
                             </InputNumber>
                         </div>
-                        <button class="montserrat-alternates-medium">
-                            <i class="pi pi-cart-arrow-down" style="color: #FFFFFF; font-size: 1.5rem; margin: 0 1.5rem 0 0;"></i>
+                        <button class="montserrat-alternates-medium" @click="cartStore.addProductInCart({
+                            id: detailsProduct.product.id,
+                            name: detailsProduct.product.name,
+                            description: detailsProduct.product.description,
+                            picture: detailsProduct.product.picture,
+                            price: detailsProduct.product.price
+                        })">
+                            <i class="pi pi-cart-arrow-down"
+                                style="color: #FFFFFF; font-size: 1.5rem; margin: 0 1.5rem 0 0;"></i>
                             Ajouter
                         </button>
                     </div>
@@ -48,14 +59,14 @@ onMounted(()=>{
 </template>
 
 <style scoped>
-
-.product{
+.product {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
     align-items: center;
 }
+
 .product_datas_quantity-add {
     display: flex;
     gap: 1.5rem;
@@ -76,15 +87,15 @@ button {
         height: max-content;
     }
 
-    .product_div_img{
+    .product_div_img {
         max-width: 45%;
     }
 
-    .product_div-img{
+    .product_div-img {
         width: 100%;
     }
 
-    .product_div-data{
+    .product_div-data {
         width: 45%;
     }
 }
