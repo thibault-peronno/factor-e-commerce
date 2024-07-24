@@ -22,11 +22,10 @@ export const useCartStore = defineStore('cart', () => {
     withCredentials: true,
   })
 
-  const countCart = computed(() => countProductsInCart.value = cartProducts.value.length)
-
   function addProductInCart(newProductInCArt : productCart) {
     cartProducts.value.push(newProductInCArt);
-    console.table(cartProducts.value);
+    // voir pour appeler une fonction ou bien une computed spécialement pour mettre à jour le nombre de produit
+    countProductsInCart.value = cartProducts.value.length;
   }
 
   function toggleCart() {
@@ -46,5 +45,5 @@ export const useCartStore = defineStore('cart', () => {
 
   
 
-  return { cartIsactive,  cartProducts, countProductsInCart, countCart, toggleCart, addProductInCart }
+  return { cartIsactive,  cartProducts, countProductsInCart, toggleCart, addProductInCart }
 })
