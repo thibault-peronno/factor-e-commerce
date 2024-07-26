@@ -17,11 +17,11 @@ class Cart extends Model
 
     public function product() : HasOne
     {
-        return $this-> hasOne(User::class, 'id', 'product_id');
+        return $this-> hasOne(Product::class, 'id', 'product_id');
     }
 
     public function command() : HasOne
     {
-        return $this-> hasOne(User::class, 'id', 'command_id');
+        return $this-> hasOne(Command::class, 'id', 'command_id');
     }
 }

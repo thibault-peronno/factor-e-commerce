@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CommandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RetireProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::apiResources([
     'cart' => CartController::class,
     'command' => CommandController::class
 ]);
+
+Route::get('/retireProduct', [RetireProductController::class, 'getRetireProduct']);
