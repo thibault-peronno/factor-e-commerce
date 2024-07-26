@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+use Illuminate\Support\Facades\Log;
+
+// Log::info('Requête reçue', ['url' => request()->path(), 'method' => request()->method()]);
+
+
 Route::apiResources([
     'user' => UserController::class,
     'product' => ProductController::class,

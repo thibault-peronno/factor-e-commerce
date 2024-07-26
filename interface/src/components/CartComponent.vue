@@ -14,37 +14,19 @@ const cartStore = useCartStore();
                 <i class="pi pi-times" @click="cartStore.toggleCart" style="color: #048A84; font-size: 2rem; cursor: pointer;"></i>
             </span>
             <Divider />
-            <div class="cartSection_product">
-                <img src="" alt="image">
-                <div class="cartSection_name-quantity">
-                    <p class="cartSection_name">title</p>
-                    <p class="cartSection-product_quantity-price">1 x 30€</p> 
+            <div v-for="cartProduct in cartStore.cartProducts" :key="cartProduct.id">
+                <div class="cartSection_product">
+                    <img class="cartSection-product_img" :src="cartProduct.picture" alt="image">
+                    <div class="cartSection_name-quantity">
+                        <p class="cartSection_name">{{ cartProduct.name }}</p>
+                        <p class="cartSection-product_quantity-price">1 x {{ cartProduct.price }}€</p> 
+                    </div>
+                    <div @click="cartStore.removeProductInCart(cartProduct.cart_id)">
+                        <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem; cursor: pointer;"></i>
+                    </div>
                 </div>
-                <div>
-                    <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem; cursor: pointer;"></i>
-                </div>
-            </div>
-            <div class="cartSection_product">
-                <img src="" alt="image">
-                <div class="cartSection_name-quantity">
-                    <p class="cartSection_name">title</p>
-                    <p class="cartSection-product_quantity-price">1 x 30€</p> 
-                </div>
-                <div>
-                    <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem; cursor: pointer;"></i>
-                </div>
-            </div>
-            <div class="cartSection_product">
-                <img src="" alt="image">
-                <div class="cartSection_name-quantity">
-                    <p class="cartSection_name">title</p>
-                    <p class="cartSection-product_quantity-price">1 x 30€</p> 
-                </div>
-                <div>
-                    <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem"></i>
-                </div>
-            </div>
-            
+
+            </div>           
         </div>
     </section>
 
@@ -86,6 +68,10 @@ const cartStore = useCartStore();
 }
 .cartSection_name{
     text-transform: uppercase;
+}
+
+.cartSection-product_img{
+    width: 100px;
 }
 
 @media (min-width: 760px) {
