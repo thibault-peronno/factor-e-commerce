@@ -21,7 +21,7 @@ const cartStore = useCartStore();
                         <p class="cartSection_name">{{ cartProduct.name }}</p>
                         <p class="cartSection-product_quantity-price">1 x {{ cartProduct.price }}€</p> 
                     </div>
-                    <div>
+                    <div @click="cartStore.removeProductInCart(cartProduct.cart_id)">
                         <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem; cursor: pointer;"></i>
                     </div>
                 </div>

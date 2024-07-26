@@ -40,11 +40,11 @@ class CartController extends Controller
         $cartModel->product_id = $request->product_id;
         $cartModel->user_id = $request->user_id;
 
-        $insertedCart = $cartModel->save();
+        $isInsertedCart = $cartModel->save();
 
         $cartAttributes = $cartModel->getAttributes();
 
-        if ($insertedCart) {
+        if ($isInsertedCart) {
             return response()->json([
                 "message" => "Panier ajouté avec succès",
                 "cart_id" => $cartAttributes['id']
@@ -78,7 +78,19 @@ class CartController extends Controller
      */
     public function update(UpdateCartRequest $request, Cart $cart)
     {
-        //
+        // dd($request, $cart);
+        $cart->is_retire = $request->is_retire;
+        
+        $isInsertedCart = $cart->save();
+        // dd($isInsertedCart);
+        if ($isInsertedCart) {
+            return response("", Response::HTTP_NO_CONTENT);
+        } else {
+            // so return a code HTTP 500 "Internal Server Error"
+            // https://restfulapi.net/http-status-codes/
+            // without body (not JSON or HTML)
+            return response("", Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**

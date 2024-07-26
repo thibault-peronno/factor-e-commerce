@@ -45,7 +45,8 @@ onMounted(() => {
                             name: detailsProduct.product.name,
                             description: detailsProduct.product.description,
                             picture: detailsProduct.product.picture,
-                            price: detailsProduct.product.price
+                            price: detailsProduct.product.price,
+                            cart_id:0
                         })">
                             <i class="pi pi-cart-arrow-down"
                                 style="color: #FFFFFF; font-size: 1.5rem; margin: 0 1.5rem 0 0;"></i>

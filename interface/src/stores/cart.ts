@@ -8,6 +8,7 @@ interface productCart {
   description: string,
   picture: string,
   price: number,
+  cart_id: number,
 }
 
 interface AddProductResponse {
@@ -39,6 +40,8 @@ export const useCartStore = defineStore('cart', () => {
         console.info(responseAxios);
         
         if (responseAxios.statusText === 'Created') {
+          newProductInCArt.cart_id = responseAxios.data.cart_id;
+          console.log(newProductInCArt, responseAxios.data.cart_id);
             cartProducts.value.push(newProductInCArt);
             updateCountProductInCArt();
         }
@@ -48,52 +51,79 @@ export const useCartStore = defineStore('cart', () => {
 }
 
 
-  function updateCountProductInCArt() {
-    countProductsInCart.value = cartProducts.value.length;
+
+/*
+* Pour user_id, on devrait récuperer l'information 
+* depuis un store user, initialisé au moment de la connexion.
+*/
+async function addProductInCartDB(newProduct: productCart): Promise<productReponse> {
+  const payloadProductCart = {
+    quantity: 1,
+    product_id: newProduct.id,
+    user_id: 1,
+  };
+  
+  // Stockez la promesse dans une variable temporaire
+  const promise = axiosInstance.post('cart', payloadProductCart)
+  .then((response) => {
+    return response; // Assurez-vous de retourner la promesse résolue ici
+  })
+  .catch((error) => {
+    console.error(error);
+    throw error; // Propagez l'erreur pour qu'elle soit gérée par le code appelant
+  });
+  
+  // Retournez la promesse stockée
+  return promise;
+}
+
+async function removeProductInCart(cart_id : number) {
+  try {
+    const responseAxios = await updateIsRetireInCartDB(cart_id);
+    console.info(responseAxios.status);
+
+    if(responseAxios.status == 204){
+      const cart = cartProducts.value.filter((cartProduct) =>cartProduct.cart_id !== cart_id)
+
+      cartProducts.value = cart;
+      updateCountProductInCArt();
+    }
+  } catch (error) {
+    console.error("Erreur lors de la suppressiondu produit du panier:", error);
+  }
+}
+
+async function updateIsRetireInCartDB(cart_id : number){
+  const payloadRetire = {
+    id:cart_id,
+    is_retire: 1
   }
 
-  /*
-   * Pour user_id, on devrait récuperer l'information 
-   * depuis un store user, initialisé au moment de la connexion.
-   */
-  async function addProductInCartDB(newProduct: productCart): Promise<AxiosResponse<productReponse>> {
-    const payloadProductCart = {
-      quantity: 1,
-      product_id: newProduct.id,
-      user_id: 1,
-    };
+  const promise = axiosInstance.put('cart/' + cart_id, payloadRetire)
+  .then((response) => {
+    return response; // Assurez-vous de retourner la promesse résolue ici
+  })
+  .catch((error) => {
+    console.error(error);
+    throw error; // Propagez l'erreur pour qu'elle soit gérée par le code appelant
+  });
   
-    // Stockez la promesse dans une variable temporaire
-    const promise = axiosInstance.post('cart', payloadProductCart)
-      .then((response) => {
-        return response; // Assurez-vous de retourner la promesse résolue ici
-      })
-      .catch((error) => {
-        console.error(error);
-        throw error; // Propagez l'erreur pour qu'elle soit gérée par le code appelant
-      });
-  
-    // Retournez la promesse stockée
-    return promise;
-  }
+  // Retournez la promesse stockée
+  return promise;
+}
+
+
+
+function updateCountProductInCArt() {
+countProductsInCart.value = cartProducts.value.length;
+}
 
   function toggleCart() {
     cartIsactive.value = !cartIsactive.value;
   }
 
-  
-    // async function callProductsApi () {
-    //   await axiosInstance.get<products>("product")
-    // .then((response) => {
-    //   products.value = response.data
-    //   return
-    // }).catch((error) =>{
-    //   console.log(error);
-    //   return error;
-    // })
-    // } 
 
   
 
-  return { cartIsactive,  cartProducts, countProductsInCart, toggleCart, addProductInCart }
+  return { cartIsactive,  cartProducts, countProductsInCart, toggleCart, addProductInCart, removeProductInCart }
 })

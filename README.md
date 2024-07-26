@@ -122,4 +122,9 @@ fichier StoreRequest.php
 Methode authorize()
 La ligne commentée est la valeur par défaut. 
 
+
+fichier UpdateCartRequest.php
+Methode authorize()
+La ligne commentée est la valeur par défaut. 
+
 ## Front-end
