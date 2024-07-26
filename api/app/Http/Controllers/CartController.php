@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
@@ -29,7 +31,30 @@ class CartController extends Controller
      */
     public function store(StoreCartRequest $request)
     {
-        //
+        // Log::info('Méthode store atteinte');
+        // dd($request->quantity);
+
+        $cartModel = new Cart();
+
+        $cartModel->quantity = $request->quantity;
+        $cartModel->product_id = $request->product_id;
+        $cartModel->user_id = $request->user_id;
+
+        $insertedCart = $cartModel->save();
+
+        $cartAttributes = $cartModel->getAttributes();
+
+        if ($insertedCart) {
+            return response()->json([
+                "message" => "Panier ajouté avec succès",
+                "cart_id" => $cartAttributes['id']
+            ], Response::HTTP_CREATED);
+            
+        } else {
+            return response([
+                "error" => "Échec de l'ajout du panier"
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**

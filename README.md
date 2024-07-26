@@ -115,4 +115,11 @@ Pour lancer le serveur API, exécuter cette commande
 php artisan serve
 ```
 
+
+### Modification de certains fichiers
+
+fichier StoreRequest.php
+Methode authorize()
+La ligne commentée est la valeur par défaut. 
+
 ## Front-end
