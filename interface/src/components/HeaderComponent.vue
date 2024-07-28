@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useCartStore } from '../stores/cart';
+import { useCartStore } from '../stores/cart'
 
-const cartStore = useCartStore();
-
+const cartStore = useCartStore()
 </script>
-
 
 <template>
   <header>
-    <img alt="Shop logo" class="logo" src="@/assets/images/logo.svg" width="125" height="125" />
+    <RouterLink class="montserrat-alternates-medium paintFont" to="/">
+      <img alt="Shop logo" class="logo" src="@/assets/images/logo.svg" width="125" height="125" />
+    </RouterLink>
 
     <div class="wrapper">
       <nav>
@@ -16,22 +16,24 @@ const cartStore = useCartStore();
         <RouterLink class="montserrat-alternates-medium paintFont" to="/about">About</RouterLink>
       </nav>
       <span class="wrapper_shopIcon-count" @click="cartStore.toggleCart">
-        <i class="pi pi-shopping-bag" 
-          style="color: #048A84; font-size: 2rem"></i>
-        <p v-if="cartStore.countProductsInCart > 0" class="wrapper_count">{{ cartStore.countProductsInCart }}</p>
+        <i class="pi pi-shopping-bag" style="color: #048a84; font-size: 2rem"></i>
+        <p v-if="cartStore.countProductsInCart > 0" class="wrapper_count">
+          {{ cartStore.countProductsInCart }}
+        </p>
       </span>
-      <i class="pi pi-user" style="color: #048A84; font-size: 2rem; cursor: pointer;"></i>
+      <routerLink :to="{ name: 'user', params: { userId: 1 } }">
+        <i class="pi pi-user" style="color: #048a84; font-size: 2rem; cursor: pointer"></i>
+      </routerLink>
     </div>
   </header>
 </template>
-
 
 <style>
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #DDF7F5;
+  background-color: #ddf7f5;
   padding: 1rem;
   flex-wrap: wrap;
 }
@@ -58,7 +60,7 @@ nav {
   position: absolute;
   bottom: -3px;
   right: -7px;
-  background-color: #64A5C4;
+  background-color: #64a5c4;
   border-radius: 100%;
   width: 25px;
   height: 25px;

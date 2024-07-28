@@ -16,7 +16,7 @@ interface product {
 }
 
 export const useDetailsProductStore = defineStore('detailsProduct', () => {
-  const value = ref(0)
+  const value = ref(1)
   const product = ref<product>({
     id: 0,
     name: 'Non trouvé',
