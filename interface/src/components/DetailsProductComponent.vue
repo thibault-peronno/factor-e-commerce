@@ -22,10 +22,10 @@ onMounted(() => {
         <div class="product_div-data">
             <h1>{{ detailsProduct.product.name }}</h1>
             <div>
-                <p>{{ detailsProduct.product.description }}</p>
+                <p class="product_description">{{ detailsProduct.product.description }}</p>
                 <span>
-                    <p>{{ detailsProduct.product.category }}</p>
-                    <p>{{ detailsProduct.product.available_quantity }}</p>
+                    <p class="product_cat">{{ detailsProduct.product.category }}</p>
+                    <p class="product_quantity">Stock : {{ detailsProduct.product.available_quantity }}</p>
                     <p>{{ detailsProduct.product.price }} €</p>
                     <div class="product_datas_quantity-add">
                         <div class="card flex justify-center">
@@ -60,6 +60,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+h1{
+    text-transform: uppercase;
+    color: #048a84;
+    font-size: xxx-large;
+    margin:0;
+}
 .product {
     display: flex;
     flex-wrap: wrap;
@@ -69,18 +76,40 @@ onMounted(() => {
     margin-top: 50px;
 }
 
+.product_div-img {
+        width: 100%;
+    }
+
+.product_cat{
+    color: #908080;
+    font-size: small;
+    background-color: #DDF7F5;
+    border-radius: 100px;
+    width: 50px;
+    text-align: center;
+}
+
+.product_description{
+    margin: 1.5rem 0;
+}
+
+.product_quantity{
+    margin: 0.5rem 0;
+}
+
 .product_datas_quantity-add {
     display: flex;
     gap: 1.5rem;
     flex-direction: row;
+    margin: 1rem 0 0 0;
 }
 
 button {
-    width: 100%;
+    width: 200px;
     margin: 1.5rem 0 0 0;
     font-weight: bold;
     display: flex;
-    padding: 1rem;
+    align-items: center;
 }
 
 @media (min-width: 760px) {
@@ -99,6 +128,7 @@ button {
 
     .product_div-data {
         width: 45%;
+        align-self: baseline;
     }
 }
 </style>

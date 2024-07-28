@@ -12,7 +12,7 @@
 
 .paintFont {
   font-size: larger;
-  color: black;
+  color: #048a84;
 }
 
 h1 {
@@ -39,11 +39,28 @@ button {
   cursor: pointer;
 }
 
-@media (min-width: 1024px) {}
+main{
+  padding: 1rem;
+}
+
 
 @media (min-width: 760px) {
   main {
+    margin: 0 2%;
+    padding: 0;
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    margin: 0 10%;
+    padding: 0;
+  }
+}
+
+@media (min-width: 2024px) {
+  main {
     margin: 0 20%;
+    padding: 0;
   }
 }
 

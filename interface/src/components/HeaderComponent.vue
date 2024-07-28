@@ -6,13 +6,12 @@ const cartStore = useCartStore()
 
 <template>
   <header>
-    <RouterLink class="montserrat-alternates-medium paintFont" to="/">
+    <RouterLink class="montserrat-alternates-medium" to="/">
       <img alt="Shop logo" class="logo" src="@/assets/images/logo.svg" width="125" height="125" />
     </RouterLink>
 
     <div class="wrapper">
       <nav>
-        <RouterLink class="montserrat-alternates-medium paintFont" to="/">Home</RouterLink>
         <RouterLink class="montserrat-alternates-medium paintFont" to="/about">About</RouterLink>
       </nav>
       <span class="wrapper_shopIcon-count" @click="cartStore.toggleCart">
