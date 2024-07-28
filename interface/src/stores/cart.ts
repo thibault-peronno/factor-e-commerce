@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { useDetailsProductStore } from './detailsProduct'
 
 interface productCart {
   id: number
@@ -24,7 +25,9 @@ interface productResponse {
 
 type productsInCart = productCart[]
 
+
 export const useCartStore = defineStore('cart', () => {
+  const detailsProductStore = useDetailsProductStore()
   const cartIsactive = ref(false)
   const cartProducts = ref<productsInCart>([])
   const countProductsInCart = ref(0)
@@ -54,8 +57,9 @@ export const useCartStore = defineStore('cart', () => {
    * depuis un store user, initialisé au moment de la connexion.
    */
   async function addProductInCartDB(newProduct: productCart): Promise<productResponse> {
+    console.log('detailsProductStore.quantityProduct', detailsProductStore.quantityProduct)
     const payloadProductCart = {
-      quantity: 1,
+      quantity: detailsProductStore.quantityProduct,
       product_id: newProduct.id,
       user_id: 1
     }

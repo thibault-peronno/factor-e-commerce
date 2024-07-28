@@ -29,7 +29,7 @@ onMounted(() => {
                     <p>{{ detailsProduct.product.price }} €</p>
                     <div class="product_datas_quantity-add">
                         <div class="card flex justify-center">
-                            <InputNumber class="personnalCss" v-model="detailsProduct.value" showButtons
+                            <InputNumber class="personnalCss" v-model="detailsProduct.quantityProduct" showButtons
                                 buttonLayout="vertical" style="width: 3rem" :min="0"
                                 :max="detailsProduct.product.available_quantity">
                                 <template #incrementbuttonicon>

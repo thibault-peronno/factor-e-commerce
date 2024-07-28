@@ -16,7 +16,7 @@ interface product {
 }
 
 export const useDetailsProductStore = defineStore('detailsProduct', () => {
-  const value = ref(1)
+  const quantityProduct = ref(1)
   const product = ref<product>({
     id: 0,
     name: 'Non trouvé',
@@ -37,6 +37,7 @@ export const useDetailsProductStore = defineStore('detailsProduct', () => {
   })
 
   async function callProductApi() {
+    this.quantityProduct = 0
     await axiosInstance
       .get<product>('product/' + route.params.productId)
       .then((response) => {
@@ -49,5 +50,5 @@ export const useDetailsProductStore = defineStore('detailsProduct', () => {
       })
   }
 
-  return { value, product, callProductApi }
+  return { quantityProduct, product, callProductApi }
 })

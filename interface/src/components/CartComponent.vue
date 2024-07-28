@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import Divider from 'primevue/divider';
 import { useCartStore } from '../stores/cart';
+import { useDetailsProductStore } from '../stores/detailsProduct'
 
 const cartStore = useCartStore();
+const detailsProductStore = useDetailsProductStore()
 
 </script>
 
@@ -19,7 +21,7 @@ const cartStore = useCartStore();
                     <img class="cartSection-product_img" :src="cartProduct.picture" alt="image">
                     <div class="cartSection_name-quantity">
                         <p class="cartSection_name">{{ cartProduct.name }}</p>
-                        <p class="cartSection-product_quantity-price">1 x {{ cartProduct.price }}€</p> 
+                        <p class="cartSection-product_quantity-price">{{ detailsProductStore.quantityProduct }} x {{ cartProduct.price }}€</p> 
                     </div>
                     <div @click="cartStore.removeProductInCart(cartProduct.cart_id)">
                         <i class="pi pi-trash" style="color: #048A84; font-size: 1.5rem; cursor: pointer;"></i>
