@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import detailsProductComponent from '../components/DetailsProductComponent.vue';
+import DetailsProductComponent from '../components/DetailsProductComponent.vue';
+import RetireProductComponent from '@/components/RetireProductComponent.vue';
 
 </script>
 
 <template>
     <main>
-        <detailsProductComponent />
+        <DetailsProductComponent />
+        <RetireProductComponent />
     </main>
 </template>
 

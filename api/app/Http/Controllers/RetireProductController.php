@@ -4,17 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class RetireProductController extends Controller
 {
-    public function getRetireProduct(){
+    public function getRetireProduct()
+    {
         $retiresCart =  Cart::where('is_retire', 1)->where('user_id', 1)->take(5)->get();
-        // dd($retiresCart);
-        foreach($retiresCart as $retireCart){
 
+        $retireProduct = [];
+        foreach ($retiresCart as $retireCart) {
             $retireCart->product;
-        }
 
-        return $retiresCart;
+            $retireProduct[] = [
+                'productID' => $retireCart->product->id,
+                'name' => $retireCart->product->name,
+                'picture' => $retireCart->product->picture,
+
+            ];
+        }
+        return response()->json($retireProduct, Response::HTTP_OK);
     }
 }

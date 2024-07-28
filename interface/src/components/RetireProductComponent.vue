@@ -8,34 +8,50 @@ const retireProductStore = useRetireProductStore()
 
 
 
-// onMounted(())
+onMounted(()=>{
+    retireProductStore.retireProductToApi();
+})
 </script>
 
 <template>
-    <h2>Ils vous intéresse</h2>
+    <div v-if="retireProductStore.isRetirePorduct">
 
-    <Carousel :value="retireProductStore.retireProduct" :numVisible="3" :numScroll="1" :responsiveOptions="retireProductStore.responsiveOptions">
-    <template #item="slotProps">
-        <div class="border border-surface-200 dark:border-surface-700 rounded m-2  p-4">
-            <div class="mb-4">
-                <div class="relative mx-auto">
-                    <img :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.data.image" :alt="slotProps.data.name" class="w-full rounded" />
-                    <!-- <Tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute" style="left:5px; top: 5px"/> -->
+        <h2>Ils vous intéresse</h2>
+    
+        <Carousel :value="retireProductStore.retireProduct" :numVisible="3" :numScroll="1" :responsiveOptions="retireProductStore.responsiveOptions">
+        <template #item="slotProps">
+            <routerLink :to="{ name: 'detailsProduct', params: { productId: slotProps.data.productID } }">
+                <div class="retire-template">
+                    <div class="mb-4">
+                        <div class="relative mx-auto">
+                            <img class="retire-image" :src="slotProps.data.picture" :alt="slotProps.data.name" />
+                            <!-- <Tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute" style="left:5px; top: 5px"/> -->
+                        </div>
+                    </div>
+                    <div class="retire-name montserrat-alternates-semibold">{{ slotProps.data.name }}</div>
                 </div>
-            </div>
-            <div class="mb-4 font-medium">{{ slotProps.data.name }}</div>
-            <div class="flex justify-between items-center">
-                <div class="mt-0 font-semibold text-xl">${{ slotProps.data.price }}</div>
-                <span>
-                    <Button icon="pi pi-heart" severity="secondary" outlined />
-                    <Button icon="pi pi-shopping-cart" class="ml-2"/>
-                </span>
-            </div>
-        </div>
-    </template>
-</Carousel>
+            </routerLink>
+        </template>
+    </Carousel>
+    </div>
+
+
 </template>
 
 <style scoped>
+.retire-template{
+    border: 1px solid #64a5c4;
+    border-radius: 2px;
+    margin : 10px;
+    cursor: pointer;
+    max-width: 300px;
+}
+.retire-image{
+    width: 100%;
+}
 
+.retire-name{
+    margin : 5px;
+    color: #048a84;
+}
 </style>
