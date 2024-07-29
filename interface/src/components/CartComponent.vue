@@ -39,7 +39,7 @@ const cartStore = useCartStore()
               {{ cartProduct.quantity }} x {{ cartProduct.price }}€
             </p>
           </div>
-          <div @click="cartStore.removeProductInCart(cartProduct.productId)">
+          <div @click="cartStore.removeProductInCart(cartProduct.productId, cartProduct.cartId)">
             <i class="pi pi-trash" style="color: #048a84; font-size: 1.5rem; cursor: pointer"></i>
           </div>
         </div>

@@ -57,6 +57,7 @@ export const useCartStore = defineStore('cart', () => {
     const quantityByProduct = axiosInstance
       .post('/quantityByProduct/', payloadProductCart)
       .then((response) => {
+        console.log(response.data)
         cartProductsFromDB.value = response.data
         return
       })
@@ -106,11 +107,11 @@ export const useCartStore = defineStore('cart', () => {
     return promise
   }
 
-  async function removeProductInCart(cartId: number) {
+  async function removeProductInCart(productId: number, cartId: number) {
     try {
       const responseAxios = await updateIsRetireInCartDB(cartId)
       if (responseAxios.status == 204) {
-        const cart = cartProducts.value.filter((cartProduct) => cartProduct.id !== cartId)
+        const cart = cartProducts.value.filter((cartProduct) => cartProduct.id !== productId)
         cartProducts.value = cart
         updateCountProductInCArt()
       }

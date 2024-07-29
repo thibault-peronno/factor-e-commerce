@@ -31,7 +31,7 @@ onMounted(() => {
           <td>{{ cartProduct.quantity }}</td>
           <td>{{ cartProduct.price }} €</td>
           <td>{{ cartProduct.quantity * cartProduct.price }} €</td>
-          <td @click="cartStore.removeProductInCart(cartProduct.productId)">
+          <td @click="cartStore.removeProductInCart(cartProduct.productId, cartProduct.cartId)">
             <i class="pi pi-trash" style="color: #048a84; font-size: 1.5rem; cursor: pointer"></i>
           </td>
         </tr>
