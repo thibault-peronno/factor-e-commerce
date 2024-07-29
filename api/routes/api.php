@@ -24,4 +24,4 @@ Route::apiResources([
 ]);
 
 Route::get('/retireProduct', [RetireProductController::class, 'getRetireProduct']);
-Route::get('/quantityByProduct', [CartController::class, 'getQuantityByProduct']);
+Route::post('/quantityByProduct', [CartController::class, 'getQuantityByProduct']);

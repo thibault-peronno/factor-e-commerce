@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import Divider from 'primevue/divider'
 import { useCartStore } from '../stores/cart'
-import { useDetailsProductStore } from '../stores/detailsProduct'
+// import { onMounted } from 'vue';
+
 
 const cartStore = useCartStore()
-const detailsProductStore = useDetailsProductStore()
+// onMounted(()=>{
+//     cartStore.getCartProductFromDB();
+// })
 </script>
 
 <template>
@@ -28,16 +31,16 @@ const detailsProductStore = useDetailsProductStore()
           Payer
         </button>
       </routerLink>
-      <div v-for="cartProduct in cartStore.cartProducts" :key="cartProduct.id">
+      <div v-for="cartProduct in cartStore.cartProductsFromDB" :key="cartProduct.productId">
         <div class="cartSection_product">
           <img class="cartSection-product_img" :src="cartProduct.picture" alt="image" />
           <div class="cartSection_name-quantity">
             <p class="cartSection_name">{{ cartProduct.name }}</p>
             <p class="cartSection-product_quantity-price">
-              {{ detailsProductStore.quantityProduct }} x {{ cartProduct.price }}€
+              {{ cartProduct.quantity }} x {{ cartProduct.price }}€
             </p>
           </div>
-          <div @click="cartStore.removeProductInCart(cartProduct.cart_id)">
+          <div @click="cartStore.removeProductInCart(cartProduct.productId)">
             <i class="pi pi-trash" style="color: #048a84; font-size: 1.5rem; cursor: pointer"></i>
           </div>
         </div>

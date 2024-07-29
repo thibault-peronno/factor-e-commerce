@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/cart'
-import { useDetailsProductStore } from '@/stores/detailsProduct'
 import { onMounted } from 'vue';
 
 const cartStore = useCartStore()
-const detailsProductStore = useDetailsProductStore()
-
 
 onMounted(()=>{
     cartStore.getCartProductFromDB();
@@ -33,7 +30,7 @@ onMounted(()=>{
           <td>{{ cartProduct.name }}</td>
           <td>{{ cartProduct.quantity }}</td>
           <td>{{ cartProduct.price }} €</td>
-          <td>{{ detailsProductStore.quantityProduct * cartProduct.price }} €</td>
+          <td>{{ cartProduct.quantity * cartProduct.price }} €</td>
           <td @click="cartStore.removeProductInCart(cartProduct.cart_id)">
           <i class="pi pi-trash" style="color: #048a84; font-size: 1.5rem; cursor: pointer"></i>
         </td>

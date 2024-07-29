@@ -55,9 +55,9 @@ export const useCartStore = defineStore('cart', () => {
     const payloadProductCart = {
       arrayProductId: arrayProductId
     }
-    console.log(payloadProductCart)
+    console.log(JSON.stringify(payloadProductCart))
     const quantityByProduct = axiosInstance
-      .get('/quantityByProduct/', { params: payloadProductCart })
+      .post('/quantityByProduct/', payloadProductCart)
       .then((response) => {
         console.table(response.data)
         cartProductsFromDB.value = response.data
@@ -113,22 +113,24 @@ export const useCartStore = defineStore('cart', () => {
     return promise
   }
 
-  async function removeProductInCart(cart_id: number) {
+  async function removeProductInCart(cartId: number) {
     try {
-      const responseAxios = await updateIsRetireInCartDB(cart_id)
-
+      const responseAxios = await updateIsRetireInCartDB(cartId)
+      console.table(cartProducts.value)
       if (responseAxios.status == 204) {
-        const cart = cartProducts.value.filter((cartProduct) => cartProduct.cart_id !== cart_id)
-
+        const cart = cartProducts.value.filter((cartProduct) => cartProduct.cart_id !== cartId)
+        
         cartProducts.value = cart
         updateCountProductInCArt()
       }
+      getCartProductFromDB()
     } catch (error) {
       console.error('Erreur lors de la suppressiondu produit du panier:', error)
     }
   }
 
   async function updateIsRetireInCartDB(cartId: number) {
+    console.log(cartId)
     const payloadRetire = {
       id: cartId,
       is_retire: 1
@@ -152,6 +154,7 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   function toggleCart() {
+    getCartProductFromDB()
     cartIsactive.value = !cartIsactive.value
   }
 

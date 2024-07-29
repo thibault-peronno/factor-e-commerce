@@ -105,7 +105,7 @@ class CartController extends Controller
     public function getQuantityByProduct(Request $request, Cart $cart)
     {
         // return dump($request);
-        $productsInCart = Cart::whereIn('product_id', $request)->get();
+        $productsInCart = Cart::whereIn('product_id', $request->input('arrayProductId'))->get();
 
         $ProductCart = [];
         foreach($productsInCart as $productInCart)
