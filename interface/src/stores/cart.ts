@@ -9,12 +9,12 @@ interface productCart {
   description: string
   picture: string
   price: number
-  cart_id: number
+  cartId: number
 }
 
 interface AddProductResponse {
   message: string
-  cart_id: number
+  cartId: number
 }
 
 interface productResponse {
@@ -25,17 +25,53 @@ interface productResponse {
 
 type productsInCart = productCart[]
 
-
 export const useCartStore = defineStore('cart', () => {
   const detailsProductStore = useDetailsProductStore()
-  const cartIsactive = ref(false)
+  const cartIsactive = ref<boolean>(false)
   const cartProducts = ref<productsInCart>([])
-  const countProductsInCart = ref(0)
+  const cartProductsFromDB = ref<productsInCart>([])
+  const countProductsInCart = ref<interger>(0)
+  const countTotalPricecommand = ref<interger>(0)
 
   const axiosInstance = axios.create({
     baseURL: 'http://127.0.0.1:8000/api/',
     withCredentials: true
   })
+
+
+  function arrayOfProductId() {
+    const arrayOfProductId: number[] = [];
+
+    cartProducts.value.forEach((product) => {
+      arrayOfProductId.push(product.id)
+    })
+    console.table(arrayOfProductId)
+    return arrayOfProductId
+  }
+
+  async function getCartProductFromDB() {
+    const arrayProductId = arrayOfProductId()
+
+    const payloadProductCart = {
+      arrayProductId: arrayProductId
+    }
+    console.log(JSON.stringify(payloadProductCart))
+    const quantityByProduct = axiosInstance
+      .post('/quantityByProduct/', payloadProductCart)
+      .then((response) => {
+        console.table(response.data)
+        cartProductsFromDB.value = response.data
+        return
+      })
+      .catch((error) => {
+        console.error(error)
+        throw error
+      })
+
+    return quantityByProduct
+  }
+
+  
 
   async function addProductInCart(newProductInCArt: productCart) {
     try {
@@ -57,7 +93,6 @@ export const useCartStore = defineStore('cart', () => {
    * depuis un store user, initialisé au moment de la connexion.
    */
   async function addProductInCartDB(newProduct: productCart): Promise<productResponse> {
-    console.log('detailsProductStore.quantityProduct', detailsProductStore.quantityProduct)
     const payloadProductCart = {
       quantity: detailsProductStore.quantityProduct,
       product_id: newProduct.id,
@@ -68,40 +103,41 @@ export const useCartStore = defineStore('cart', () => {
     const promise = axiosInstance
       .post('cart', payloadProductCart)
       .then((response) => {
-        return response // Assurez-vous de retourner la promesse résolue ici
+        return response
       })
       .catch((error) => {
         console.error(error)
-        throw error // Propagez l'erreur pour qu'elle soit gérée par le code appelant
+        throw error
       })
 
-    // Retournez la promesse stockée
     return promise
   }
 
-  async function removeProductInCart(cart_id: number) {
+  async function removeProductInCart(cartId: number) {
     try {
-      const responseAxios = await updateIsRetireInCartDB(cart_id)
-
+      const responseAxios = await updateIsRetireInCartDB(cartId)
+      console.table(cartProducts.value)
       if (responseAxios.status == 204) {
-        const cart = cartProducts.value.filter((cartProduct) => cartProduct.cart_id !== cart_id)
-
+        const cart = cartProducts.value.filter((cartProduct) => cartProduct.cart_id !== cartId)
+        
         cartProducts.value = cart
         updateCountProductInCArt()
       }
+      getCartProductFromDB()
     } catch (error) {
       console.error('Erreur lors de la suppressiondu produit du panier:', error)
     }
   }
 
-  async function updateIsRetireInCartDB(cart_id: number) {
+  async function updateIsRetireInCartDB(cartId: number) {
+    console.log(cartId)
     const payloadRetire = {
-      id: cart_id,
+      id: cartId,
       is_retire: 1
     }
 
     const promise = axiosInstance
-      .put('cart/' + cart_id, payloadRetire)
+      .put('cart/' + cartId, payloadRetire)
       .then((response) => {
         return response
       })
@@ -118,8 +154,15 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   function toggleCart() {
+    getCartProductFromDB()
     cartIsactive.value = !cartIsactive.value
   }
+
+  // function calculateTotalPriceCommand() {
+  //   const priceByQuantityProduct : array = []
+
+  //   for
+  // }
 
   return {
     cartIsactive,
@@ -127,6 +170,8 @@ export const useCartStore = defineStore('cart', () => {
     countProductsInCart,
     toggleCart,
     addProductInCart,
-    removeProductInCart
+    removeProductInCart,
+    cartProductsFromDB,
+    getCartProductFromDB
   }
 })
