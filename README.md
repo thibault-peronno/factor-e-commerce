@@ -3,7 +3,7 @@ Ce repository est un test technique réalisé pour un poste de développeur VueJ
 
 ## Back-end
 
-L'API est développé avec le framework Laravel[Laravel](https://laravel.com/docs/11.x) en version 11.
+L'API est développé avec le framework [Laravel](https://laravel.com/docs/11.x) en version 11.
 
 A l'installation du fichier sur votre environnement, il faut une version de PHP minimale 8.2.
 
@@ -11,7 +11,7 @@ Si vous n'avez pas composer sur votre machine : [Composer](https://getcomposer.o
 
 Exécuter la commande suivante. Composer est l'équivalent de npm, yarn en JavaScript.
 
-**Toujours se mettre dans le dossier API**
+**Toujours se placer dans le dossier API**
 
 ```bash
 composer install
@@ -81,30 +81,28 @@ php artisan route:list
 Les routes en place dans le projet.
 
 ```bash
-  GET|HEAD        / ................................................................................................................  
-  POST            _ignition/execute-solution ......... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController  
-  GET|HEAD        _ignition/health-check ..................... ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController  
-  POST            _ignition/update-config .................. ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController  
-  GET|HEAD        api/cart ....................................................................... cart.index › CartController@index  
-  POST            api/cart ....................................................................... cart.store › CartController@store  
-  GET|HEAD        api/cart/{cart} .................................................................. cart.show › CartController@show  
-  PUT|PATCH       api/cart/{cart} .............................................................. cart.update › CartController@update  
-  DELETE          api/cart/{cart} ............................................................ cart.destroy › CartController@destroy  
-  GET|HEAD        api/command .............................................................. command.index › CommandController@index  
-  POST            api/command .............................................................. command.store › CommandController@store  
-  GET|HEAD        api/command/{command} ...................................................... command.show › CommandController@show  
-  PUT|PATCH       api/command/{command} .................................................. command.update › CommandController@update  
-  DELETE          api/command/{command} ................................................ command.destroy › CommandController@destroy  
-  GET|HEAD        api/product .............................................................. product.index › ProductController@index  
-  POST            api/product .............................................................. product.store › ProductController@store  
-  GET|HEAD        api/product/{product} ...................................................... product.show › ProductController@show  
-  PUT|PATCH       api/product/{product} .................................................. product.update › ProductController@update  
-  DELETE          api/product/{product} ................................................ product.destroy › ProductController@destroy  
-  GET|HEAD        api/user ....................................................................... user.index › UserController@index  
-  POST            api/user ....................................................................... user.store › UserController@store  
-  GET|HEAD        api/user/{user} .................................................................. user.show › UserController@show  
-  PUT|PATCH       api/user/{user} .............................................................. user.update › UserController@update  
-  DELETE          api/user/{user} ............................................................ user.destroy › UserController@destroy 
+  GET|HEAD        api/cart ......................................................................... cart.index › CartController@index  
+  POST            api/cart ......................................................................... cart.store › CartController@store  
+  GET|HEAD        api/cart/{cart} .................................................................... cart.show › CartController@show  
+  PUT|PATCH       api/cart/{cart} ................................................................ cart.update › CartController@update  
+  DELETE          api/cart/{cart} .............................................................. cart.destroy › CartController@destroy  
+  GET|HEAD        api/command ................................................................ command.index › CommandController@index  
+  POST            api/command ................................................................ command.store › CommandController@store  
+  GET|HEAD        api/command/{command} ........................................................ command.show › CommandController@show  
+  PUT|PATCH       api/command/{command} .................................................... command.update › CommandController@update  
+  DELETE          api/command/{command} .................................................. command.destroy › CommandController@destroy  
+  GET|HEAD        api/product ................................................................ product.index › ProductController@index  
+  POST            api/product ................................................................ product.store › ProductController@store  
+  GET|HEAD        api/product/{product} ........................................................ product.show › ProductController@show  
+  PUT|PATCH       api/product/{product} .................................................... product.update › ProductController@update  
+  DELETE          api/product/{product} .................................................. product.destroy › ProductController@destroy  
+  POST            api/quantityByProduct .............................................................. CartController@getProductToCart  
+  GET|HEAD        api/retireProduct ......................................................... RetireProductController@getRetireProduct  
+  GET|HEAD        api/user ......................................................................... user.index › UserController@index      
+  POST            api/user ......................................................................... user.store › UserController@store      
+  GET|HEAD        api/user/{user} .................................................................... user.show › UserController@show      
+  PUT|PATCH       api/user/{user} ................................................................ user.update › UserController@update      
+  DELETE          api/user/{user} .............................................................. user.destroy › UserController@destroy
 ```
 
 ### Serveur
@@ -132,6 +130,7 @@ La ligne commentée est la valeur par défaut.
 L'interface utilisateur est développée avec Vue.Js en version 3, avec la composition API. Pour le store est utilisé Pinia, recommandé par Vue.Js.
 
 Pour lancer l'interface, suivre ces commandes après avoir exécuté celles du back-end.
+**Toujours se placer dans le dossier interface**
 
 ```bash
 npm install
