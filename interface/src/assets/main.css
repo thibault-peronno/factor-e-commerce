@@ -1,0 +1,173 @@
+@import './base.css';
+@import 'primeicons/primeicons.css';
+
+#app {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: black;
+}
+
+.baseFontSize {
+  font-size: large;
+}
+
+.paintFont {
+  font-size: larger;
+  color: #048a84;
+}
+
+h1 {
+  font-size: xx-large;
+  margin: 3.5rem 0;
+}
+
+h2 {
+  font-size: x-large;
+  margin: 2.5rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: #048A84;
+  font-size: larger;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+main{
+  padding: 1rem;
+}
+
+
+@media (min-width: 760px) {
+  main {
+    margin: 0 2%;
+    padding: 0;
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    margin: 0 10%;
+    padding: 0;
+  }
+}
+
+@media (min-width: 2024px) {
+  main {
+    margin: 0 20%;
+    padding: 0;
+  }
+}
+
+.montserrat-alternates-thin {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.montserrat-alternates-extralight {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.montserrat-alternates-light {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.montserrat-alternates-regular {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-alternates-medium {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-alternates-semibold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.montserrat-alternates-bold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-alternates-extrabold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.montserrat-alternates-black {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.montserrat-alternates-thin-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.montserrat-alternates-extralight-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.montserrat-alternates-light-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.montserrat-alternates-regular-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.montserrat-alternates-medium-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.montserrat-alternates-semibold-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.montserrat-alternates-bold-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.montserrat-alternates-extrabold-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.montserrat-alternates-black-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}

@@ -1,0 +1,102 @@
+<script setup lang="ts">
+import Divider from 'primevue/divider'
+import { useCartStore } from '../stores/cart'
+// import { onMounted } from 'vue';
+
+const cartStore = useCartStore()
+// onMounted(()=>{
+//     cartStore.getCartProductFromDB();
+// })
+</script>
+
+<template>
+  <section class="cartSectionHidden" :class="{ cartSectionActive: cartStore.cartIsactive }">
+    <div>
+      <span class="cartSection_title-icons">
+        <h3>Votre panier</h3>
+        <i
+          class="pi pi-times"
+          @click="cartStore.toggleCart"
+          style="color: #048a84; font-size: 2rem; cursor: pointer"
+        ></i>
+      </span>
+      <Divider />
+      <routerLink :to="{ name: 'checkout' }" v-if="cartStore.countProductsInCart > 0">
+        <button class="montserrat-alternates-medium cartSection_checkout">
+          <i
+            class="pi pi-credit-card"
+            style="color: #ffffff; font-size: 1.5rem; margin: 0 1.5rem 0 0"
+          ></i>
+          Payer
+        </button>
+      </routerLink>
+      <div v-for="cartProduct in cartStore.cartProductsFromDB" :key="cartProduct.productId">
+        <div class="cartSection_product">
+          <img class="cartSection-product_img" :src="cartProduct.picture" alt="image" />
+          <div class="cartSection_name-quantity">
+            <p class="cartSection_name">{{ cartProduct.name }}</p>
+            <p class="cartSection-product_quantity-price">
+              {{ cartProduct.quantity }} x {{ cartProduct.price }}€
+            </p>
+          </div>
+          <div @click="cartStore.removeProductInCart(cartProduct.productId, cartProduct.cartId)">
+            <i class="pi pi-trash" style="color: #048a84; font-size: 1.5rem; cursor: pointer"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.cartSectionActive {
+  right: 0 !important;
+}
+.cartSectionHidden {
+  position: fixed;
+  top: 0;
+  right: -1000px;
+  background-color: white;
+  height: 100vh;
+  width: 100%;
+  padding: 1rem;
+}
+.cartSection_title-icons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0.5rem 0;
+}
+.cartSection_product {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  background-color: #ddf7f5;
+  height: 100px;
+}
+.cartSection-product_quantity-price {
+  color: #908080;
+  font-size: small;
+}
+.cartSection_name-quantity {
+  flex-grow: 1;
+}
+.cartSection_name {
+  text-transform: uppercase;
+}
+
+.cartSection-product_img {
+  width: 100px;
+}
+
+.cartSection_checkout {
+  width: 100%;
+}
+
+@media (min-width: 760px) {
+  .cartSectionHidden {
+    width: 350px;
+  }
+}
+</style>
