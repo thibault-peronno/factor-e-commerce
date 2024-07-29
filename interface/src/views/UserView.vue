@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UserComponent from '../components/UserComponent.vue';
+import UserComponent from '../components/UserComponent.vue'
 </script>
 
 <template>
@@ -8,4 +8,4 @@ import UserComponent from '../components/UserComponent.vue';
   </main>
 </template>
 
-
+<style scoped></style>

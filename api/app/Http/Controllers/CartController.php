@@ -33,7 +33,6 @@ class CartController extends Controller
     public function store(StoreCartRequest $request)
     {
         // Log::info('Méthode store atteinte');
-        // dd($request->quantity);
 
         $cartModel = new Cart();
 
@@ -79,17 +78,13 @@ class CartController extends Controller
      */
     public function update(UpdateCartRequest $request, Cart $cart)
     {
-        // dd($request, $cart);
         $cart->is_retire = $request->is_retire;
         
         $isInsertedCart = $cart->save();
-        // dd($isInsertedCart);
+
         if ($isInsertedCart) {
             return response("", Response::HTTP_NO_CONTENT);
         } else {
-            // so return a code HTTP 500 "Internal Server Error"
-            // https://restfulapi.net/http-status-codes/
-            // without body (not JSON or HTML)
             return response("", Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
@@ -102,10 +97,13 @@ class CartController extends Controller
         //
     }
 
-    public function getQuantityByProduct(Request $request, Cart $cart)
+    /**
+     * To get the product to display on the products on cart
+     * @param Request $request
+     */
+    public function getProductToCart(Request $request, Cart $cart)
     {
-        // return dump($request);
-        $productsInCart = Cart::whereIn('product_id', $request->input('arrayProductId'))->get();
+        $productsInCart = Cart::whereIn('product_id', $request->input('arrayProductId'))->where('is_retire', 0)->get();
 
         $ProductCart = [];
         foreach($productsInCart as $productInCart)

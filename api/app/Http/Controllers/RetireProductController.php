@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RetireProductController extends Controller
 {
+    /**
+     * to get 5 last prodcuts retired from the cart for the current user
+     */
     public function getRetireProduct()
     {
         $retiresCart =  Cart::where('is_retire', 1)->where('user_id', 1)->take(5)->get();

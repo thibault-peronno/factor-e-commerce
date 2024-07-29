@@ -128,3 +128,13 @@ Methode authorize()
 La ligne commentée est la valeur par défaut. 
 
 ## Front-end
+
+L'interface utilisateur est développée avec Vue.Js en version 3, avec la composition API. Pour le store est utilisé Pinia, recommandé par Vue.Js.
+
+Pour lancer l'interface, suivre ces commandes après avoir exécuté celles du back-end.
+
+```bash
+npm install
+
+npm run dev
+```

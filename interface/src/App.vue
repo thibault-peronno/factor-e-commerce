@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import HearderComponent from './components/HeaderComponent.vue'
-import CartComponent from './components/CartComponent.vue';
+import CartComponent from './components/CartComponent.vue'
 </script>
 
 <template>
@@ -11,5 +11,4 @@ import CartComponent from './components/CartComponent.vue';
   <CartComponent />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
