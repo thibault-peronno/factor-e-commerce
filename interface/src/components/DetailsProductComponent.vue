@@ -33,7 +33,7 @@ onMounted(() => {
                 showButtons
                 buttonLayout="vertical"
                 style="width: 3rem"
-                :min="0"
+                :min="1"
                 :max="detailsProduct.product.available_quantity"
               >
                 <template #incrementbuttonicon>
