@@ -88,8 +88,8 @@ const detailsProductStore = useDetailsProductStore()
   width: 100px;
 }
 
-.cartSection_checkout{
-    width: 100%;
+.cartSection_checkout {
+  width: 100%;
 }
 
 @media (min-width: 760px) {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
@@ -99,5 +100,29 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         //
+    }
+
+    public function getQuantityByProduct(Request $request, Cart $cart)
+    {
+        // return dump($request);
+        $productsInCart = Cart::whereIn('product_id', $request)->get();
+
+        $ProductCart = [];
+        foreach($productsInCart as $productInCart)
+        {
+            $productInCart->product;
+
+            $ProductCart[] = [
+                'productId' => $productInCart->product->id,
+                'name' => $productInCart->product->name,
+                'price' => $productInCart->product->price,
+                'picture' => $productInCart->product->picture,
+                'cartId' => $productInCart->id,
+                'quantity' => $productInCart->quantity,
+            ];
+        }
+
+            
+       return response()->json($ProductCart, Response::HTTP_OK);
     }
 }

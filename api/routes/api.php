@@ -5,7 +5,6 @@ use App\Http\Controllers\CommandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RetireProductController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/user', function (Request $request) {
@@ -25,3 +24,4 @@ Route::apiResources([
 ]);
 
 Route::get('/retireProduct', [RetireProductController::class, 'getRetireProduct']);
+Route::get('/quantityByProduct', [CartController::class, 'getQuantityByProduct']);
