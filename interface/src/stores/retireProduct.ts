@@ -34,21 +34,20 @@ export const useRetireProductStore = defineStore('retireProduct', () => {
       numScroll: 1
     }
   ])
-  const isRetirePorduct = ref<boolean>(false);
+  const isRetireProduct = ref<boolean>(false)
 
   const axiosInstance = axios.create({
     baseURL: 'http://127.0.0.1:8000/api/',
     withCredentials: true
   })
 
-  async function retireProductToApi() {
+  async function getRetireProductToApi() {
     await axiosInstance
       .get<products>('retireProduct')
       .then((response) => {
         retireProduct.value = response.data
-        console.log(retireProduct.value)
-        if(Array.isArray(retireProduct.value) && retireProduct.value.length > 0){
-          isRetirePorduct.value = true
+        if (Array.isArray(retireProduct.value) && retireProduct.value.length > 0) {
+          isRetireProduct.value = true
         }
         return
       })
@@ -58,5 +57,5 @@ export const useRetireProductStore = defineStore('retireProduct', () => {
       })
   }
 
-  return { retireProduct, responsiveOptions, isRetirePorduct, retireProductToApi }
+  return { retireProduct, responsiveOptions, isRetireProduct, getRetireProductToApi }
 })

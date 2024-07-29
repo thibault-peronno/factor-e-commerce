@@ -3,7 +3,6 @@ import Divider from 'primevue/divider'
 import { useCartStore } from '../stores/cart'
 // import { onMounted } from 'vue';
 
-
 const cartStore = useCartStore()
 // onMounted(()=>{
 //     cartStore.getCartProductFromDB();
