@@ -37,7 +37,7 @@ export const useDetailsProductStore = defineStore('detailsProduct', () => {
   })
 
   async function callProductApi() {
-    this.quantityProduct = 0
+    quantityProduct.value = 1
     await axiosInstance
       .get<product>('product/' + route.params.productId)
       .then((response) => {
